@@ -74,8 +74,8 @@ export class BasePageComponent implements OnInit {
       this.startOption = 'from_autosave';
     }
 
-    this.acceptedTermsOfUse = sessionStorage.acceptedLoinc === 'true';
-    this.acceptedSnomed = sessionStorage.acceptedSnomed === 'true';
+    this.acceptedTermsOfUse = localStorage.acceptedLoinc === 'true';
+    this.acceptedSnomed = localStorage.acceptedSnomed === 'true';
     this.formService.setSnomedUser(this.acceptedSnomed);
 
     this.formSubject.asObservable().pipe(
@@ -88,6 +88,14 @@ export class BasePageComponent implements OnInit {
     ).subscribe(() => {
       console.log('Saved');
     });
+
+    // KGM TODO ... this is just to prove it works. Ideally use original version
+   let initialQuestionnaire = localStorage.initialQuestionnaire
+   if (initialQuestionnaire !== undefined) {
+     this.setQuestionnaire(JSON.parse(initialQuestionnaire));
+     this.setStep('fl-editor');
+     localStorage.removeItem('initialQuestionnaire')
+   }
 
     formService.guidingStep$.subscribe((step) => {this.guidingStep = step;});
     FormService.lformsLoaded$.subscribe({error: (error) => {
@@ -108,8 +116,8 @@ export class BasePageComponent implements OnInit {
         .then(
           (result) => {
             this.acceptedTermsOfUse = result.acceptedLoinc;
-            sessionStorage.acceptedLoinc = result.acceptedLoinc;
-            sessionStorage.acceptedSnomed = result.acceptedSnomed;
+            localStorage.acceptedLoinc = result.acceptedLoinc;
+            localStorage.acceptedSnomed = result.acceptedSnomed;
             this.formService.setSnomedUser(result.acceptedSnomed);
           },
           (reason) => {
@@ -158,6 +166,7 @@ export class BasePageComponent implements OnInit {
    * Add window listeners, mainly to handle messaging with other browser windows.
    */
   addWindowListeners() {
+    console.log('addWindowListeners()')
     console.log(this.openerUrl)
     if (this.openerUrl) {
       const msgListener = (event) => {
