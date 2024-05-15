@@ -9,6 +9,7 @@ import {AutoCompleteResult} from '../lib/widgets/auto-complete/auto-complete.com
 import {Util} from '../lib/util';
 import fhir, {BundleEntry} from 'fhir/r4';
 import SNOMED_CT_Editions from '../../assets/SNOMED_CT_Editions.json';
+import {environment} from '../../environments/environment';
 declare var LForms: any;
 
 enum JsonFormatType {
@@ -39,8 +40,8 @@ export class FetchService {
   static loincBaseUrl = 'https://clinicaltables.nlm.nih.gov';
   static loincSearchUrl = FetchService.loincBaseUrl + '/api/loinc_items/v3/search';
   static loincFormsUrl = FetchService.loincBaseUrl + '/loinc_form_definitions';
-  static fhirUrl = 'https://lforms-fhir.nlm.nih.gov/baseR4/Questionnaire';
-  static snomedCodeSystemsUrl = 'https://snowstorm.ihtsdotools.org/fhir/CodeSystem';
+  static fhirUrl = environment.fhirUrl;
+  static snomedCodeSystemsUrl = environment.snomedCodeSystemsUrl;
   _snomedEditions: SNOMEDEditions = null;
 
   assetsUrl = '/assets';

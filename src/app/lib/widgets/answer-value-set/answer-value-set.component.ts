@@ -128,12 +128,15 @@ export class AnswerValueSetComponent extends StringComponent implements OnInit, 
    */
   setSNOMEDTerminologyServer(isAdd: boolean) {
     if(isAdd) {
+      /* KGM disabled
       if(!this.extensionService.getFirstExtensionByUrl(TerminologyServerComponent.PREFERRED_TERMINOLOGY_SERVER_URI)) {
         this.extensionService.addExtension({
           url: TerminologyServerComponent.PREFERRED_TERMINOLOGY_SERVER_URI,
           valueUrl: AnswerValueSetComponent.snomedTerminologyServer
         }, 'valueUrl')
       }
+
+       */
     } else {
       this.extensionService.removeExtension((ext) => {
         return ext.value.url === TerminologyServerComponent.PREFERRED_TERMINOLOGY_SERVER_URI

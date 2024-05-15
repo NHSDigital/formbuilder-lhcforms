@@ -130,12 +130,13 @@ export class BasePageComponent implements OnInit {
  * '/window-open?referrer=[openerUrl], where <code>openerUrl</code> is location.href
  * of the parent window (window.opener). If the referrer parameter is missing,
  * it reads referrer or origin header for the url.
- * 
+ *
  * @param location - Window location object
  * @returns string - window.opener url.
  */
   private parseOpenerUrl(location: Location): string {
     let ret = null;
+    console.log(location)
     const pathname = location?.pathname.replace(/^\/+/, '').toLowerCase();
     if(pathname === 'window-open') {
       const params = new URLSearchParams(location.search);

@@ -11,7 +11,7 @@ import appVersion from '../../assets/version.json';
     <nav id="header" class="ps-0 pe-0 d-flex">
       <mat-icon id="logo" svgIcon="home" aria-label="Home"></mat-icon>
       <div id="siteNameBox" class="d-flex flex-column align-self-baseline ps-2">
-        <div class="fs-4"><a class="btn btn-link p-0" id="siteName" href="/">NLM Form Builder</a></div>
+        <div class="fs-4"><a class="btn btn-link p-0" id="siteName" href="/">Form Builder (Skunkworks)</a></div>
         <div class="fs-6">A tool for building HL7<sup>®</sup> FHIR<sup>®</sup> Questionnaires</div>
 
       </div>
