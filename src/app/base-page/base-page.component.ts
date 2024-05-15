@@ -139,8 +139,9 @@ export class BasePageComponent implements OnInit {
     console.log(location)
     const pathname = location?.pathname.replace(/^\/+/, '').toLowerCase();
   console.log(pathname)
-    if(pathname === 'window-open' || pathname === 'formbuilder-lhcforms') {
+    if(pathname === 'window-open' || pathname === 'formbuilder-lhcforms' || pathname === 'formbuilder-lhcforms/') {
       const params = new URLSearchParams(location.search);
+      console.log(params)
       ret = params.get('referrer');
     }
     return ret;
