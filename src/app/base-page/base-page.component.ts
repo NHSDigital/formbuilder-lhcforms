@@ -138,7 +138,8 @@ export class BasePageComponent implements OnInit {
     let ret = null;
     console.log(location)
     const pathname = location?.pathname.replace(/^\/+/, '').toLowerCase();
-    if(pathname === 'window-open') {
+  console.log(pathname)
+    if(pathname === 'window-open' || pathname === 'formbuilder-lhcforms') {
       const params = new URLSearchParams(location.search);
       ret = params.get('referrer');
     }
@@ -159,6 +160,7 @@ export class BasePageComponent implements OnInit {
     if (this.openerUrl) {
       const msgListener = (event) => {
         const message = event.data;
+        console.log(event.data)
         const parentUrl = this.formService.windowOpenerUrl;
         if(!parentUrl.startsWith(event.origin)) {
           return;
