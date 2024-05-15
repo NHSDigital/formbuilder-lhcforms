@@ -115,7 +115,7 @@ export class HeaderComponent implements OnInit {
               private sanitizer: DomSanitizer) {
     // Register our icon(s)
     this.iconRegistry.addSvgIcon('home',
-      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/images/projectLogo.svg'));
+      this.sanitizer.bypassSecurityTrustResourceUrl('../assets/images/projectLogo.svg'));
   }
 
 
